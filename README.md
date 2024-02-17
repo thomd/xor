@@ -10,5 +10,5 @@ little XOR for the CLI for educational purposes
 
      xor [-b] [-d] [-h] x1 x2
 
-![xor](xor.png)
+![xor](xor.png | width=427)
 
