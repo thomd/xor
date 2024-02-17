@@ -1,0 +1,90 @@
+#!/usr/bin/env python
+
+import sys
+import os
+import string
+
+# def isbinary(x):
+    # return True if (set(x) == {'0', '1'} or set(x) == {'0'} or set(x) == {'1'}) and (4 <= len(x) <= 8) else False
+
+# def ishex(x):
+    # return True if all([c in string.hexdigits for c in x]) and (len(x) == 2) else False
+
+# def isdec(x):
+    # return True if all([c in string.digits for c in x]) and (len(x) == 3) else False
+
+# def ischar(x):
+    # return True if (x in string.ascii_letters or x in string.digits or x in string.punctuation) and (len(x) == 1) else False
+
+def convert(x):
+    '''
+    return tuple of (type, ascii, dec, hex, bin)
+    '''
+    if typ == 'ascii':
+        return (x, ord(x), format(ord(x), '02x').upper(), format(ord(x), '08b'))
+    if typ == 'dec':
+        return (chr(int(x)), int(x), format(int(x), '02x').upper(), format(int(x), '08b'))
+    if typ == 'hex':
+        return (chr(int(x, 16)), int(x, 16), x.upper(), format(int(x, 16), '08b'))
+    if typ == 'bin':
+        return (chr(int(x, 2)), int(x, 2), format(int(x, 2), '02x').upper(), format(int(x, 2), '08b'))
+
+args = sys.argv[1:]
+typ = 'ascii'
+if '-b' in args:
+    typ = 'bin'
+    args.remove('-b')
+if '-d' in args:
+    typ = 'dec'
+    args.remove('-d')
+if '-h' in args:
+    typ = 'hex'
+    args.remove('-h')
+
+if len(args) == 0 or len(args) > 2:
+    print('''
+  \033[90mUSAGE\033[0m
+
+     xor [-b] [-d] [-h] x1 x2
+
+  \033[90mEXAMPLE\033[0m
+
+     xor a j
+     xor -d 97 106
+     xor -h 61 6A
+     xor -b 1100001 1101010
+    ''')
+    sys.exit(1)
+
+if len(args) == 1:
+    a = b = convert(args[0])
+
+if len(args) == 2:
+    a = convert(args[0])
+    b = convert(args[1])
+
+# XOR Operation
+x = a[1] ^ b[1]
+c = (chr(int(x)), int(x), format(int(x), '02x').upper(), format(int(x), '08b'))
+
+if 'DEBUG' in os.environ:
+    print(a)
+    print(b)
+    print(c)
+
+def p(s):
+    return '\' \'' if s == ' ' else s if s in (string.ascii_letters + string.digits + string.punctuation) else '\u2B1A'
+
+def l(x):
+    return len(x) if type(x) == 'str' else len(str(x))
+
+def m(a, b, c):
+    return '-' * max(l(a), l(b), l(c))
+
+print('')
+print(f'\033[90m{"ASCII":^12s}{"DEC":<7s}{"HEX":<7s}{"BIN"}\033[0m')
+print('')
+print(f'{p(a[0]):^12s}{a[1]:<7d}{a[2]:<7s}{a[3]}')
+print(f'{p(b[0]):^12s}{b[1]:<7d}{b[2]:<7s}{b[3]}')
+print(f'\033[90m{m(p(a[0]),p(b[0]),p(c[0])):^12s}{m(a[1],b[1],c[1]):<7s}{m(a[2],b[2],c[2]):<7s}{m(a[3],b[3],c[3])}\033[0m')
+print(f'{p(c[0]):^12s}{c[1]:<7d}{c[2]:<7s}{c[3]}')
