@@ -49,10 +49,10 @@ if len(args) == 0 or len(args) > 2:
 
   \033[90mEXAMPLE\033[0m
 
-     xor a j
-     xor -d 97 106
-     xor -h 61 6A
-     xor -b 1100001 1101010
+     xor a W
+     xor -d 97 201
+     xor -h 61 A9
+     xor -b 1001 11010100
     ''')
     sys.exit(1)
 
@@ -78,13 +78,16 @@ def p(s):
 def l(x):
     return len(x) if type(x) == 'str' else len(str(x))
 
-def m(a, b, c):
-    return '-' * max(l(a), l(b), l(c))
+def m(a, b='', c=''):
+    return '\u2014' * max(l(a), l(b), l(c))
+
+def plus(s):
+    return '\u2A01 ' + s
 
 print('')
-print(f'\033[90m{"ASCII":^12s}{"DEC":<7s}{"HEX":<7s}{"BIN"}\033[0m')
+print(f'\033[90m{"ASCII":^18s}{"DEC":<11s}{"HEX":<11s}{"BIN"}\033[0m')
 print('')
-print(f'{p(a[0]):^12s}{a[1]:<7d}{a[2]:<7s}{a[3]}')
-print(f'{p(b[0]):^12s}{b[1]:<7d}{b[2]:<7s}{b[3]}')
-print(f'\033[90m{m(p(a[0]),p(b[0]),p(c[0])):^12s}{m(a[1],b[1],c[1]):<7s}{m(a[2],b[2],c[2]):<7s}{m(a[3],b[3],c[3])}\033[0m')
-print(f'{p(c[0]):^12s}{c[1]:<7d}{c[2]:<7s}{c[3]}')
+print(f'{p(a[0]):^18s}{str(a[1]):<11s}{a[2]:<11s}{a[3]}')
+print(f'{plus(p(b[0])):^16s}{plus(str(b[1])):<11s}{plus(b[2]):<11s}{plus(b[3])}')
+print(f'\033[90m{m(p(a[0]),p(b[0]),p(c[0])):^18s}{m(a[1],b[1],c[1]):<11s}{m(a[2],b[2],c[2]):<11s}{m(a[3])}\033[0m')
+print(f'{p(c[0]):^18s}{c[1]:<11d}{c[2]:<11s}{c[3]}')
