@@ -8,3 +8,7 @@ little XOR for the CLI for educational purposes
 
 ## Usage
 
+     xor [-b] [-d] [-h] x1 x2
+
+![xor](xor.png)
+
