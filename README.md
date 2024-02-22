@@ -10,5 +10,4 @@ little XOR for the CLI for educational purposes
 
      xor [-b] [-d] [-h] x1 x2
 
-![xor](xor.png)
-<img src="/xor.png" alt="xor" style="width:300px;height:auto;">
+<img src="/xor.png" alt="xor" style="width:50%;height:auto;margin:2rem;">
