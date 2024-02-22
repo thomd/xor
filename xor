@@ -59,6 +59,17 @@ if typ == 'bin':
             print(f"\n \033[31m'{arg}' is not a valid single binary byte\033[0m")
             sys.exit(1)
 
+if typ == 'dec':
+    for arg in args:
+        if arg != None and (not all([d in string.digits for d in arg]) or int(arg) < 0 or int(arg) > 255):
+            print(f"\n \033[31m'{arg}' is not a valid single decimal number in [0, 255]\033[0m")
+            sys.exit(1)
+
+if typ == 'hex':
+    for arg in args:
+        if arg != None and (not all([d in string.hexdigits for d in arg]) or len(arg) > 2):
+            print(f"\n \033[31m'{arg}' is not a valid single hexadecimal number\033[0m")
+            sys.exit(1)
 
 if len(args) == 1:
     a = b = convert(args[0])
@@ -96,3 +107,5 @@ print(f'{p(a[0]):^18s}{str(a[1]):<11s}{a[2]:<11s}{a[3]}')
 print(f'{plus(p(b[0])):^16s}{plus(str(b[1])):<11s}{plus(b[2]):<11s}{plus(b[3])}')
 print(f'\033[90m{m(p(a[0]),p(b[0]),p(c[0])):^18s}{m(a[1],b[1],c[1]):<11s}{m(a[2],b[2],c[2]):<11s}{m(a[3])}\033[0m')
 print(f'{p(c[0]):^18s}{c[1]:<11d}{c[2]:<11s}{c[3]}')
+
+sys.exit(0)
