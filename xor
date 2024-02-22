@@ -36,7 +36,7 @@ if len(args) == 0 or len(args) > 2:
     print('''
   \033[90mUSAGE\033[0m
 
-     xor [-b] [-d] [-h] x1 x2
+     xor [-b] [-d] [-h] val_1 [val_2]
 
   \033[90mEXAMPLE\033[0m
 
