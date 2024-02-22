@@ -47,12 +47,26 @@ if len(args) == 0 or len(args) > 2:
     ''')
     sys.exit(1)
 
+if typ == 'ascii':
+    for arg in args:
+        if arg != None and len(arg) != 1:
+            print(f"\n \033[31m'{arg}' is not a valid single ASCII character\033[0m")
+            sys.exit(1)
+
+if typ == 'bin':
+    for arg in args:
+        if arg != None and (len(arg) > 8 or not all([b in '01' for b in arg])):
+            print(f"\n \033[31m'{arg}' is not a valid single binary byte\033[0m")
+            sys.exit(1)
+
+
 if len(args) == 1:
     a = b = convert(args[0])
 
 if len(args) == 2:
     a = convert(args[0])
     b = convert(args[1])
+
 
 # XOR Operation
 x = a[1] ^ b[1]
