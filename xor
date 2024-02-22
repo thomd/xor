@@ -13,18 +13,21 @@ def convert(x):
     if typ == 'dec':
         return (chr(int(x)),      int(x),      format(int(x), '02x').upper(),     format(int(x), '08b'))
     if typ == 'hex':
-        return (chr(int(x, 16)),  int(x, 16),  x.upper(),                         format(int(x, 16), '08b'))
+        return (chr(int(x, 16)),  int(x, 16),  format(int(x, 16), '02x').upper(), format(int(x, 16), '08b'))
     if typ == 'bin':
         return (chr(int(x, 2)),   int(x, 2),   format(int(x, 2), '02x').upper(),  format(int(x, 2), '08b'))
 
 args = sys.argv[1:]
 typ = 'ascii'
+
 if '-b' in args:
     typ = 'bin'
     args.remove('-b')
+
 if '-d' in args:
     typ = 'dec'
     args.remove('-d')
+
 if '-h' in args:
     typ = 'hex'
     args.remove('-h')
