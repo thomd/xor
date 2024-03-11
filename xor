@@ -4,6 +4,10 @@ import sys
 import os
 import string
 
+WHITE = '\033[1m'
+GREY = '\033[90m'
+RESET = '\033[0m'
+
 def convert(x):
     '''
     return tuple of (ascii, dec, hex, bin)
@@ -33,30 +37,30 @@ if '-h' in args:
     args.remove('-h')
 
 if len(args) == 0 or len(args) > 2:
-    print('''
-  \033[90mUSAGE\033[0m
+    print(f'''
+  {WHITE}USAGE{RESET}
 
      xor [-b] [-d] [-h] val_1 [val_2]
 
-  \033[90mEXAMPLE\033[0m
+  {WHITE}EXAMPLE{RESET}
 
      xor a W
      xor -d 97 201
      xor -h 61 A9
      xor -b 1001 11010100
 
-  \033[90mPYTHON CONVERSIONS\033[0m
+  {WHITE}PYTHON CONVERSIONS{RESET}
 
-                    ┌─────────────────┬────────────┬───────────────────────────────────┬────────────────────────────┐
+                    {GREY}┌─────────────────┬────────────┬───────────────────────────────────┬────────────────────────────┐
                     │ to ASCII        │ to DECIMAL │ to HEX                            │ to BINARY                  │
      ┌──────────────┼─────────────────┼────────────┼───────────────────────────────────┼────────────────────────────┤
-     │ from ASCII   │ x               │ ord(x)     │ format(ord(x), '02x').upper()     │ format(ord(x), '08b'))     │
+     │ from ASCII   │ {RESET}x{GREY}               │ {RESET}ord(x){GREY}     │ {RESET}format(ord(x), '02x').upper(){GREY}     │ {RESET}format(ord(x), '08b')){GREY}     │
      ├──────────────┼─────────────────┼────────────┼───────────────────────────────────┼────────────────────────────┤
-     │ from DECIMAL │ chr(int(x))     │ int(x)     │ format(int(x), '02x').upper()     │ format(int(x), '08b'))     │
+     │ from DECIMAL │ {RESET}chr(int(x)){GREY}     │ {RESET}int(x){GREY}     │ {RESET}format(int(x), '02x').upper(){GREY}     │ {RESET}format(int(x), '08b')){GREY}     │
      ├──────────────┼─────────────────┼────────────┼───────────────────────────────────┼────────────────────────────┤
-     │ from HEX     │ chr(int(x, 16)) │ int(x, 16) │ format(int(x, 16), '02x').upper() │ format(int(x, 16), '08b')) │
+     │ from HEX     │ {RESET}chr(int(x, 16)){GREY} │ {RESET}int(x, 16){GREY} │ {RESET}format(int(x, 16), '02x').upper(){GREY} │ {RESET}format(int(x, 16), '08b')){GREY} │
      ├──────────────┼─────────────────┼────────────┼───────────────────────────────────┼────────────────────────────┤
-     │ from BINARY  │ chr(int(x, 2))  │ int(x, 2)  │ format(int(x, 2), '02x').upper()  │ format(int(x, 2), '08b'))  │
+     │ from BINARY  │ {RESET}chr(int(x, 2)){GREY}  │ {RESET}int(x, 2){GREY}  │ {RESET}format(int(x, 2), '02x').upper(){GREY}  │ {RESET}format(int(x, 2), '08b')){GREY}  │
      └──────────────┴─────────────────┴────────────┴───────────────────────────────────┴────────────────────────────┘
     ''')
     sys.exit(1)
