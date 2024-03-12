@@ -51,17 +51,19 @@ if len(args) == 0 or len(args) > 2:
 
   {WHITE}PYTHON CONVERSIONS{RESET}
 
-                    {GREY}┌─────────────────┬────────────┬───────────────────────────────────┬────────────────────────────┐
-                    │ to ASCII        │ to DECIMAL │ to HEX                            │ to BINARY                  │
-     ┌──────────────┼─────────────────┼────────────┼───────────────────────────────────┼────────────────────────────┤
-     │ from ASCII   │ {RESET}x{GREY}               │ {RESET}ord(x){GREY}     │ {RESET}format(ord(x), '02x').upper(){GREY}     │ {RESET}format(ord(x), '08b')){GREY}     │
-     ├──────────────┼─────────────────┼────────────┼───────────────────────────────────┼────────────────────────────┤
-     │ from DECIMAL │ {RESET}chr(int(x)){GREY}     │ {RESET}int(x){GREY}     │ {RESET}format(int(x), '02x').upper(){GREY}     │ {RESET}format(int(x), '08b')){GREY}     │
-     ├──────────────┼─────────────────┼────────────┼───────────────────────────────────┼────────────────────────────┤
-     │ from HEX     │ {RESET}chr(int(x, 16)){GREY} │ {RESET}int(x, 16){GREY} │ {RESET}format(int(x, 16), '02x').upper(){GREY} │ {RESET}format(int(x, 16), '08b')){GREY} │
-     ├──────────────┼─────────────────┼────────────┼───────────────────────────────────┼────────────────────────────┤
-     │ from BINARY  │ {RESET}chr(int(x, 2)){GREY}  │ {RESET}int(x, 2){GREY}  │ {RESET}format(int(x, 2), '02x').upper(){GREY}  │ {RESET}format(int(x, 2), '08b')){GREY}  │
-     └──────────────┴─────────────────┴────────────┴───────────────────────────────────┴────────────────────────────┘
+                    {GREY}┌─────────────────┬────────────┬───────────────────────────────────┬───────────────────────────┐
+                    │ to ASCII        │ to DECIMAL │ to HEX                            │ to BINARY                 │
+     ┌──────────────┼─────────────────┼────────────┼───────────────────────────────────┼───────────────────────────┤
+     │ from ASCII   │ {RESET}x{GREY}               │ {RESET}ord(x){GREY}     │ {RESET}format(ord(x), '02x').upper(){GREY}     │ {RESET}format(ord(x), '08b'){GREY}     │
+     ├──────────────┼─────────────────┼────────────┼───────────────────────────────────┼───────────────────────────┤
+     │ from DECIMAL │ {RESET}chr(int(x)){GREY}     │ {RESET}int(x){GREY}     │ {RESET}format(int(x), '02x').upper(){GREY}     │ {RESET}format(int(x), '08b'){GREY}     │
+     ├──────────────┼─────────────────┼────────────┼───────────────────────────────────┼───────────────────────────┤
+     │ from HEX     │ {RESET}chr(int(x, 16)){GREY} │ {RESET}int(x, 16){GREY} │ {RESET}format(int(x, 16), '02x').upper(){GREY} │ {RESET}format(int(x, 16), '08b'){GREY} │
+     ├──────────────┼─────────────────┼────────────┼───────────────────────────────────┼───────────────────────────┤
+     │ from BINARY  │ {RESET}chr(int(x, 2)){GREY}  │ {RESET}int(x, 2){GREY}  │ {RESET}format(int(x, 2), '02x').upper(){GREY}  │ {RESET}format(int(x, 2), '08b'){GREY}  │
+     └──────────────┴─────────────────┴────────────┴───────────────────────────────────┴───────────────────────────┘{RESET}
+
+     python -c "print(format(ord('a'), '08b'))"
     ''')
     sys.exit(1)
 
