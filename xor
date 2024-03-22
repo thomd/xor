@@ -121,7 +121,14 @@ def plus(s):
     return '\u2A01 ' + s
 
 print('')
-print(f'\033[90m{"ASCII":^18s}{"DEC":<11s}{"HEX":<11s}{"BIN"}\033[0m')
+if typ == 'ascii':
+    print(f'\033[33m{"ASCII":^18s}\033[90m{"DEC":<11s}{"HEX":<11s}{"BIN"}\033[0m')
+if typ == 'dec':
+    print(f'\033[90m{"ASCII":^18s}\033[33m{"DEC":<11s}\033[90m{"HEX":<11s}{"BIN"}\033[0m')
+if typ == 'hex':
+    print(f'\033[90m{"ASCII":^18s}{"DEC":<11s}\033[33m{"HEX":<11s}\033[90m{"BIN"}\033[0m')
+if typ == 'bin':
+    print(f'\033[90m{"ASCII":^18s}{"DEC":<11s}{"HEX":<11s}\033[33m{"BIN"}\033[0m')
 print('')
 print(f'{p(a[0]):^18s}{str(a[1]):<11s}{a[2]:<11s}{a[3]}')
 print(f'{plus(p(b[0])):^16s}{plus(str(b[1])):<11s}{plus(b[2]):<11s}{plus(b[3])}')
